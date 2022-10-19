@@ -1,0 +1,84 @@
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    &__header{
+        width: 100vw;
+        background-color: #2980B9;
+        text-align: center;
+        filter: drop-shadow(0 0 0.2rem #333637);
+
+        &-logo{
+            width: 10vw;
+            padding: 1vh 1vw;
+        }
+    }
+
+    &__body{
+        margin-top: 8%;
+        width: 25%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: center;
+        align-items: center;
+        background-color: #2980B9;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        filter: drop-shadow(0 0 0.1rem #333637);
+
+        &-tittle{
+            color: #252424;
+            font-size: 4rem;
+        }
+
+        &-button{
+            padding: 1rem 0;
+            border-radius: .8rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            display: inline-block;
+            width: 60%;
+            font-size: 2rem;
+            background: #252424;
+            color: #ffff;
+    
+            &:hover{
+                color: #ffff;
+                transition: all 0.35s;    
+            }
+    
+            &::after{
+                content: "";
+                background: #0f8fe4; 
+                position: absolute;
+                z-index: -1;
+                padding: 16px 20px;
+                display: block;
+                top: 0;
+                bottom: 0;
+                left: 100%;
+                right: -100%;
+                -webkit-transition: all 0.35s;
+                transition: all 0.35s;    
+            }
+    
+            &:hover::after {
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                -webkit-transition: all 0.35s;
+                transition: all 0.35s;
+              }
+        }
+    }
+
+}
+
