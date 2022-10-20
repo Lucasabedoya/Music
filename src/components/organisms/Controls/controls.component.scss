@@ -1,0 +1,8 @@
+@import "../../../styles/variables.scss";
+
+.controls{
+    width: 100vw;
+    height: 100%;
+    background-color: $blue;
+    filter: drop-shadow(0 0 0.2rem #333637);
+}

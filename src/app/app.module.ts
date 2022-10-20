@@ -11,6 +11,15 @@ import { LoginComponent } from 'src/components/template/Login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ControlsComponent } from '../components/organisms/Controls/controls.component';
+import { PerfilComponent } from '../components/molecules/perfil/perfil.component';
+import { SidebarLinksComponent } from '../components/molecules/sidebar-links/sidebar-links.component';
+import { YourPlaylistsComponent } from '../components/molecules/your-playlists/your-playlists.component';
+import { AImageComponent } from '../components/atoms/aimage/aimage.component';
+import { PImageComponent } from '../components/atoms/pimage/pimage.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { LoaderComponent } from '../components/atoms/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +31,18 @@ import { ControlsComponent } from '../components/organisms/Controls/controls.com
     SidebarComponent,
     NavbarComponent,
     ControlsComponent,
+    PerfilComponent,
+    SidebarLinksComponent,
+    YourPlaylistsComponent,
+    AImageComponent,
+    PImageComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

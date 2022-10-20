@@ -1,3 +1,4 @@
+@import "../../../styles/variables.scss";
 
 .login{
     display: flex;
@@ -8,9 +9,10 @@
 
     &__header{
         width: 100vw;
-        background-color: #2980B9;
+        height: 8vh;
+        background-color: $blue;
         text-align: center;
-        filter: drop-shadow(0 0 0.2rem #333637);
+        filter: drop-shadow(0 0 0.2rem $shadow-gray);
 
         &-logo{
             width: 10vw;
@@ -27,13 +29,13 @@
         justify-content: space-evenly;
         text-align: center;
         align-items: center;
-        background-color: #2980B9;
+        background-color: $blue;
         padding: 1.5rem;
         border-radius: 1rem;
-        filter: drop-shadow(0 0 0.1rem #333637);
+        filter: drop-shadow(0 0 0.1rem $shadow-gray);
 
         &-tittle{
-            color: #252424;
+            color: $gray;
             font-size: 4rem;
         }
 
@@ -46,7 +48,7 @@
             display: inline-block;
             width: 60%;
             font-size: 2rem;
-            background: #252424;
+            background: $gray;
             color: #ffff;
     
             &:hover{
@@ -56,7 +58,7 @@
     
             &::after{
                 content: "";
-                background: #0f8fe4; 
+                background: $Light-blue; 
                 position: absolute;
                 z-index: -1;
                 padding: 16px 20px;

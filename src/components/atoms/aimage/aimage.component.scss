@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+
+.a-image{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: .1rem solid transparent;
+    border-radius: 1rem;
+    padding: .5vh 0;
+    
+    &:hover{
+        border: .1rem solid $shadow-gray; 
+    }
+
+    &__icon{
+        width: 1.4rem;
+        margin-left: .5vw;
+    }
+    
+    &__button{
+        color: $gray;
+        font-size: 1.4rem;
+        margin-left: .6vw;
+    }
+
+}
+

@@ -19,7 +19,7 @@ export class HomeComponent {
       localStorage.setItem('token', this.location);
       this.router.navigate(['/dashboard'])
     } catch (error) {
-      console.log(error)
+      this.router.navigate(['/login'])
     }
     
   }

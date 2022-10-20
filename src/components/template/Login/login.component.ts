@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
 })
 
 export class LoginComponent {
+
+  
+  constructor(private router: Router) {
+    
+    try {
+      const token = localStorage.getItem('token')
+      if(token){this.router.navigate(['/dashboard'])}
+    } catch (error) {
+    }
+    
+  }
+  
 
   redirect = () => {
             
