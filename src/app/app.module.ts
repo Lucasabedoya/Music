@@ -20,6 +20,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { LoaderComponent } from '../components/atoms/loader/loader.component';
+import { playlistsReducer } from '../store/reducers/counter.reducer';
+import { ROOT_REDUCERS } from 'src/store/app.state';
 
 @NgModule({
   declarations: [
@@ -41,8 +43,8 @@ import { LoaderComponent } from '../components/atoms/loader/loader.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({ name: 'TEST' })
   ],
   providers: [],
   bootstrap: [AppComponent]

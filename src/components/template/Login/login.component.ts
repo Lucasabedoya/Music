@@ -19,10 +19,8 @@ export class LoginComponent {
     }
     
   }
-  
 
-  redirect = () => {
-            
+  redirect = () => {   
     const clientId = '222ec84c437548bfab5fe139838fd1d0';
     const redirectUrl = 'http://localhost:4200/';
     const apiUrl = 'http://accounts.spotify.com/authorize';
@@ -32,12 +30,11 @@ export class LoginComponent {
         'user-modify-playback-state',
         'user-read-playback-state',
         'user-read-currently-playing',
+        'playlist-read-private',
     ];
     window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(
         " "
     )}&response_type=token&show_dialog=true`;
-
   }
-
 
 }

@@ -1,1 +1,6 @@
-<p>your-playlists works!</p>
+<ul class="your-playlists">
+    <loader *ngIf="loading$ | async"></loader>
+    <li *ngFor="let playlist of playlists$ | async; let i = index;" class="your-playlists__button">
+        {{i}}. {{playlist.name}}
+    </li>   
+</ul> 
