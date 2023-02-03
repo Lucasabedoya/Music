@@ -1,10 +1,40 @@
 <div class="spotify">
-    <div class="dashboard">
+    <div class="dashboard-loading" *ngIf="loading$">
+        <img class="dashboard-loading__img" src="../../../assets/images/spotifyBlackLogo.png" alt="spotify">
+        <loader></loader>
+    </div>
+    <div class="dashboard" *ngIf="!loading$">
         <sidebar></sidebar>
         <div class="body">
             <navbar></navbar>
-            <current-playlist></current-playlist>
+            <router-outlet></router-outlet>
         </div>
         <controls></controls> 
     </div>
+
+    <div class="container">
+        <div class="bubbles">
+            <span class="bubbles__span" style="--i:11;"></span>
+            <span class="bubbles__span" style="--i:12;"></span>
+            <span class="bubbles__span" style="--i:24;"></span>
+            <span class="bubbles__span" style="--i:10;"></span>
+            <span class="bubbles__span" style="--i:14;"></span>
+            <span class="bubbles__span" style="--i:23;"></span>
+            <span class="bubbles__span" style="--i:18;"></span>
+            <span class="bubbles__span" style="--i:16;"></span>
+            <span class="bubbles__span" style="--i:19;"></span>
+            <span class="bubbles__span" style="--i:20;"></span>
+            <span class="bubbles__span" style="--i:22;"></span>
+            <span class="bubbles__span" style="--i:25;"></span>
+            <span class="bubbles__span" style="--i:18;"></span>
+            <span class="bubbles__span" style="--i:21;"></span>
+            <span class="bubbles__span" style="--i:15;"></span>
+            <span class="bubbles__span" style="--i:13;"></span>
+            <span class="bubbles__span" style="--i:26;"></span>
+            <span class="bubbles__span" style="--i:17;"></span>
+            <span class="bubbles__span" style="--i:13;"></span>
+            <span class="bubbles__span" style="--i:28;"></span>
+        </div>
+    </div>
+    
 </div>

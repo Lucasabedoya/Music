@@ -11,6 +11,7 @@ export class AImageComponent implements OnInit {
   @Input() alt: string | undefined;
   @Input() label: string | undefined;
   @Input() href: string | undefined;
+  @Input() color?: string | undefined;
 
   constructor() { 
     

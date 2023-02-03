@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { loadedPlaylists, loadPlaylists } from 'src/store/actions/counter.actions';
+import { currentFavorites, currentProfile, loadedCurrentPlaylist, loadedPlaylists, loadPlaylists } from 'src/store/actions/counter.actions';
+import { selectLoading } from 'src/store/selectors/counter.selector';
+import { UsuariosService } from 'src/services/usuarios.service';
 
 @Component({
   selector: 'dashboard',
@@ -11,14 +13,12 @@ import { loadedPlaylists, loadPlaylists } from 'src/store/actions/counter.action
 export class dashboardComponent implements OnInit{
 
   location: string;
-  token: string | null;
-  playlists?: [{
-    id?: number,
-    name?: string,
-  }] | undefined; 
+  loading$: boolean | undefined;
+  playlists?: any; 
+  profile?: any;
+  favorites?: any;
 
-  constructor(location : Location, private store: Store<any>) {
-    this.token = localStorage.getItem('token');
+  constructor(location : Location, private store: Store<any>, private usuariosService: UsuariosService) {
     this.location = location.path(true);
     try {
       this.location = this.location.split("=")[1].split("&")[0];
@@ -26,33 +26,65 @@ export class dashboardComponent implements OnInit{
     } catch (error) {
       
     }
-    
   }
   ngOnInit(): void {
-    this.store.dispatch(loadPlaylists());
     this.getPlaylistData();
+    this.getUser();
+
+    this.usuariosService.obtenerFavoritos()
+      .subscribe(response => {
+        this.favorites = response; 
+        const { total, items } = this.favorites
+        this.store.dispatch(currentFavorites({
+          currentFavorites: { total, items }
+        }))
+       })
+
+    this.store.select(selectLoading).subscribe(cb => {this.loading$ = cb});
   }
 
-  private getPlaylistData = async () => {
-    
-    await fetch(
-      "https://api.spotify.com/v1/me/playlists",
-      {
-        headers: {
-          Authorization: "Bearer " + this.token,
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then(response => response.json())
-      .then(data => {
-        let playlists = data.items.map(({ id, name }: { id: number; name: string }) => { 
-          return { id, name }; }); 
-        this.playlists = playlists;
+  private getPlaylistData = () => {
+
+    this.usuariosService.obtenerPlaylists()
+      .subscribe(response => {
+
+        this.playlists = response;
+        this.playlists = this.playlists.items.map(({ id, name, images, owner, description, tracks }: { id: number; name: string, images: [], owner: {}, description: string, tracks: {} }) => { 
+            return { id, name, images, owner, description, tracks }; });
+
         this.store.dispatch(loadedPlaylists(
           { playlist: this.playlists }
-        ))
-      });
+        ));
+
+        this.store.dispatch(loadedCurrentPlaylist(
+          { currentPlaylist: this.playlists![0] }
+        ));
+
+      })
+  
+  };
+
+  getUser = () => {
+
+    this.usuariosService.obtenerCurrentUser()
+      .subscribe(response => {
+        this.profile = response;
+        const { country, display_name, email, followers, images, product, type } = this.profile;
+        const profile = {
+          country: country,
+          display_name: display_name,
+          email: email,
+          followers: followers,
+          images: images,
+          product: product,
+          type: type,
+        }
+        this.store.dispatch(currentProfile(
+          { currentProfile: profile } 
+        ));
+
+       });
+    
   };
   
 }

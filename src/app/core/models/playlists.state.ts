@@ -1,4 +1,9 @@
 export interface PlaylistsState {
     loading: boolean,
-    playlists: ReadonlyArray<any>,
+    playlists: [],
+    currentPlaylist: [] | any,
+    currentTracks: [],
+    currentProfile: [],
+    currentFavorites: [],
+
 }

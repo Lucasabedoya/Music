@@ -1,0 +1,126 @@
+@import "../../../styles/variables.scss";
+
+.favorite-playlists{
+    display: flex;
+    height: 30vh;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    
+    &__img{
+        width: 30vh;
+        height: 30vh;
+        margin-left: 1rem;
+        border-radius: .5rem;
+    }
+
+    &__container{
+        
+        &-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: $t-white;
+        }
+    }
+
+    &__list{
+        font-size: 1rem;
+
+        &-tittle{
+            color: $t-white;
+            font-size: 6rem;
+        }
+
+        &-description{
+            color: $Light-gray;
+            font-size: 1.2rem;
+        }
+        
+        &-owner{
+            color: $t-white;
+            font-size: 1.4rem;
+        }
+    }
+
+}
+
+
+.current-tracks{
+    overflow: scroll;
+    height: 45.5vh;
+    scrollbar-width: none;
+
+    &__container{
+        display: flex;
+        gap: .6rem;
+        align-items: center;
+        height: 5vh;
+       
+
+        &-tittles{
+            display: grid;
+            grid-template-columns: 3% 40% 30% 20% 5%;
+            background: $black;
+            opacity: 85%;
+            color: $t-white;
+            height: 2rem;
+            width: 100%;
+            z-index: 10;
+            align-items: center;
+        }
+        &-tracks{
+            cursor: pointer;
+            display: grid;  
+            padding: .3rem 0;
+            grid-template-rows: 10%;
+            grid-template-columns: 3% 40% 30% 20% 5%;
+            background: $black;
+            opacity: 85%;
+            align-items: center;
+            color: $t-white;
+            &:hover{
+                background-color: $Light-gray;
+            }
+        }
+        &-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+    }
+
+    &__info{
+        &-img{
+            width: 2.4vw;
+            height: 2.4vw;
+        }
+        &-name{
+            font-size: 1rem;
+        }
+        &-artist{
+            opacity: 65%;
+            font-size: .8rem;
+            display: flex;
+            flex-flow: row wrap;
+        }
+    }
+}
+
+.text-center{
+    text-align: center;
+    align-self: center;
+}
+
+.center{
+    align-self: center;
+}
+
+.imgVerde{
+    position: absolute;
+    left: 0;
+}
+
+.container{
+    position: relative;
+}

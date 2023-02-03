@@ -1,0 +1,48 @@
+<section class="current-tracks__container-tittles">
+    <h4 class="text-center">#</h4>
+    <h4>TITULO</h4>
+    <h4>ÁLBUM</h4>
+    <h4 class="text-center">FECHA INCORPORACIÓN</h4>
+    <h4 class="text-center">TIEMPO</h4>
+</section>
+<div class="current-tracks" >
+    <section class="current-tracks__container-tracks" *ngFor="let track of this.currentTracks; let i = index;">
+        <p class="text-center">{{i + 1}}</p>
+        <div class="current-tracks__container">
+            <img class="current-tracks__info-img" src={{track.tracks.album.images[0].url}} alt="">
+            <div class="current-tracks__container-info">
+                <p class="current-tracks__info-name">{{track.tracks.name}}</p>
+                <div class="current-tracks__info-artist">
+                    <p class="current-tracks__info-artist" *ngFor="let artist of track.tracks.artists"> {{artist.name}} | &nbsp;</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <p class="center">{{track.tracks.album.name}}</p>
+        
+        <p class="text-center">{{track.added_at}}</p>
+
+        <div class="container">
+
+            <div *ngIf="(!track.favorite)">
+                <img 
+                class="img" src="../../../assets/images/corazon.svg" 
+                alt="Corazon" 
+                (click)="setFavorite(track.tracks.id,i)">
+            </div>
+            
+            <div *ngIf="(track.favorite)">
+                <img 
+                class="imgVerde" src="../../../assets/images/corazonVerde.svg" 
+                alt="Corazon" 
+                (click)="setFavorite(track.tracks.id,i)">
+            </div>
+            
+            <p class="text-center">{{msToMinutes(track.tracks.duration_ms)}}</p>
+        </div>
+
+    </section>
+</div>
+
+

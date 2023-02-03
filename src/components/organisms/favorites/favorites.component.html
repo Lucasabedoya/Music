@@ -1,0 +1,48 @@
+<article class="favorite-playlists">
+    <img class="favorite-playlists__img" src='https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png' alt='favoritos'>
+    <section class="favorite-playlists__container-info">
+        <h4 class="favorite-playlists__list">LISTA</h4>
+        <h2 class="favorite-playlists__list-tittle">Canciones que te gustan</h2>
+        <p  class="favorite-playlists__list-owner">{{this.favoritesTracks$.total}} canciones</p>
+    </section>
+</article> 
+
+<section class="current-tracks__container-tittles">
+    <h4 class="text-center">#</h4>
+    <h4>TITULO</h4>
+    <h4>ÁLBUM</h4>
+    <h4 class="text-center">FECHA INCORPORACIÓN</h4>
+    <h4 class="text-center">TIEMPO</h4>
+</section>
+<div class="current-tracks" >
+    <section class="current-tracks__container-tracks" *ngFor="let track of this.favoritesTracks$.items; let i = index;">
+        <p class="text-center">{{i + 1}}</p>
+        <div class="current-tracks__container">
+            <img class="current-tracks__info-img" src={{track.track.album.images[0].url}} alt="">
+            <div class="current-tracks__container-info">
+                <p class="current-tracks__info-name">{{track.track.name}}</p>
+                <div class="current-tracks__info-artist">
+                    <p class="current-tracks__info-artist" *ngFor="let artist of track.track.artists"> {{artist.name}} | &nbsp;</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="center">{{track.track.album.name}}</p>
+
+        <p class="text-center">{{track.added_at}}</p>
+        
+        <div class="container">
+
+            <img 
+            class="imgVerde" src="../../../assets/images/corazonVerde.svg" 
+            alt="Corazon" 
+            (click)="removeFavorite(track.track.id, i)">
+            
+            <p class="text-center">{{msToMinutes(track.track.duration_ms)}}</p>
+        </div>
+        
+    </section>
+</div>
+
+
+

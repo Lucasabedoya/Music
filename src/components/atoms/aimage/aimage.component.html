@@ -1,5 +1,12 @@
 
-<div class="a-image">
-    <img class="a-image__icon" src={{url}} alt={{alt}}>
-    <a class="a-image__button" href={{href}}>{{label}}</a>
-</div>
+<a class="a-image__button a-image__button-white white" href={{href}} *ngIf="this.color === 'white'">
+    <img class="a-image__icon white-icon" src={{url}} alt={{alt}}>
+    {{label}}
+</a>
+
+<a class="a-image__button a-image__button-black black" href={{href}} *ngIf="this.color === 'black'">
+    <img class="a-image__icon black-icon" src={{url}} alt={{alt}}>
+    {{label}}
+</a>
+
+

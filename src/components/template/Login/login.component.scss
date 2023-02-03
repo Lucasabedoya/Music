@@ -1,6 +1,8 @@
 @import "../../../styles/variables.scss";
 
 .login{
+    z-index: 10;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,15 +10,20 @@
     height: 100vh;
 
     &__header{
+        position: absolute;
+        top: -10;
         width: 100vw;
         height: 8vh;
-        background-color: $blue;
+        background-color: $black;
         text-align: center;
-        filter: drop-shadow(0 0 0.2rem $shadow-gray);
+        box-shadow: 0 0 0.2rem $gray,
+        0 0 0.4rem $shadow-gray,
+        0 0 0.6rem $shadow-gray;
 
         &-logo{
             width: 10vw;
             padding: 1vh 1vw;
+            filter: invert(1);
         }
     }
 
@@ -29,36 +36,52 @@
         justify-content: space-evenly;
         text-align: center;
         align-items: center;
-        background-color: $blue;
+        background-color: $black;
         padding: 1.5rem;
         border-radius: 1rem;
         filter: drop-shadow(0 0 0.1rem $shadow-gray);
 
         &-tittle{
-            color: $gray;
+            color: $t-white;
             font-size: 4rem;
         }
-
+        
         &-button{
-            padding: 1rem 0;
-            border-radius: .8rem;
+            cursor: pointer;
             position: relative;
-            z-index: 1;
-            overflow: hidden;
-            display: inline-block;
+            padding: 1rem 0;
             width: 60%;
             font-size: 2rem;
-            background: $gray;
+            background: $black;
             color: #ffff;
-    
+            overflow: hidden;
+            display: inline-block;   
+            z-index: 11; 
+
             &:hover{
-                color: #ffff;
-                transition: all 0.35s;    
+                
+                &::after{
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    -webkit-transition: all 0.35s;
+                    transition: all 0.35s;
+                }
             }
-    
+            
+            &::before{
+                content: "";
+                position: absolute;
+                right: -10px;
+                transition: all 1s ease;
+            }
+
             &::after{
                 content: "";
-                background: $Light-blue; 
+                background: #4fc3dc;
+                animation: animate;
+                transition: .6s;
                 position: absolute;
                 z-index: -1;
                 padding: 16px 20px;
@@ -68,19 +91,99 @@
                 left: 100%;
                 right: -100%;
                 -webkit-transition: all 0.35s;
-                transition: all 0.35s;    
-            }
-    
-            &:hover::after {
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                -webkit-transition: all 0.35s;
                 transition: all 0.35s;
               }
+            
+            &-span{
+                position: absolute;
+                display: block;
+                // opacity: 15%;
+            }
+            
+            &-span:nth-child(1){
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #03e9f4); 
+                animation: animate1 1s linear infinite;
+            }
+
+            &-span:nth-child(2){
+                top: -100%;
+                right: 0;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, #03e9f4); 
+                animation: animate2 1s linear infinite;
+                animation-delay: 0.25s;
+            }
+
+            &-span:nth-child(3){
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #03e9f4); 
+                animation: animate3 1s linear infinite;
+                animation-delay: 0.5s;
+            }
+
+            &-span:nth-child(4){
+                bottom: -100%;
+                left: 0;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, #03e9f4); 
+                animation: animate4 1s linear infinite;
+                animation-delay: 0.75s;
+            }
+            
         }
     }
 
+}
+
+@keyframes animate{
+    0%{
+        width: 0%;
+    }
+    50%,100%{
+        width: 60%;
+    }
+}
+
+@keyframes animate1{
+    0%{
+        left: -100%
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+
+@keyframes animate2{
+    0%{
+        top: -100%
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+@keyframes animate3{
+    0%{
+        right: -100%
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+@keyframes animate4{
+    0%{
+        bottom: -100%
+    }
+    50%,100%{
+        bottom: 100%;
+    }
 }
 

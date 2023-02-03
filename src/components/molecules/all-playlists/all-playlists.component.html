@@ -1,0 +1,8 @@
+<div class="all-playlists" *ngFor="let playlist of this.playlists$">
+    <playlistBox
+        name={{playlist.name}}
+        imgUrl={{playlist.images[0].url}}
+        imgAlt='playlist'
+        description={{playlist.description}}>
+    </playlistBox>
+</div>

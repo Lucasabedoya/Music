@@ -13,3 +13,23 @@ export const selectLoading = createSelector(
     selectPlaylistsFeature,
     (state: PlaylistsState) => state.loading 
 )
+
+export const selectCurrentPlaylist = createSelector(
+    selectPlaylistsFeature,
+    (state: PlaylistsState) => state.currentPlaylist
+)
+
+export const selectCurrentTracks = createSelector(
+    selectPlaylistsFeature,
+    (state: PlaylistsState) => state.currentTracks
+)
+
+export const selectCurrentProfile = createSelector(
+    selectPlaylistsFeature,
+    (state: PlaylistsState) => state.currentProfile
+)
+
+export const selectCurrentFavorites = createSelector(
+    selectPlaylistsFeature,
+    (state: PlaylistsState) => state.currentFavorites
+)

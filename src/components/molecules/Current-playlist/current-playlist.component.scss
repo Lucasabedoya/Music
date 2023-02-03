@@ -1,0 +1,46 @@
+@import "../../../styles/variables.scss";
+
+.current-playlists{
+    display: flex;
+    height: 30vh;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    
+    &__img{
+        width: 30vh;
+        height: 30vh;
+        margin-left: 1rem;
+        border-radius: .5rem;
+    }
+
+    &__container{
+        
+        &-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: $t-white;
+        }
+    }
+
+    &__list{
+        font-size: 1rem;
+
+        &-tittle{
+            color: $t-white;
+            font-size: 6rem;
+        }
+
+        &-description{
+            color: $Light-gray;
+            font-size: 1.2rem;
+        }
+        
+        &-owner{
+            color: $t-white;
+            font-size: 1.4rem;
+        }
+    }
+
+}

@@ -1,0 +1,19 @@
+<div class="profile">
+
+    <img class="profile__img" src={{this.profile$.images[0].url}} alt="">
+
+    <section class="profile__container-info">
+        <h4 class="profile__tittle">PERFIL</h4>
+        <h2 class="profile__name">{{this.profile$.display_name}} - {{this.profile$.country}}</h2>
+        <div class="profile__acc-description">
+            <p>{{this.profile$.email}}</p>
+            <p>{{this.profile$.type}} - {{this.profile$.product}}</p>
+        </div>
+    </section>
+
+</div>
+<div class="all-playlists-container">
+    <h3 class="all-playlists__tittle">Mis playlists</h3>
+    <all-playlists class="all-playlists__playlists"></all-playlists>
+</div>
+

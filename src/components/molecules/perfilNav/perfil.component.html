@@ -1,25 +1,20 @@
 <div class="perfil">
     <div class="perfil__button">
         <pimage 
-        url="../../../assets/images/Perfil.png" 
+        url={{profile$.images[0].url}} 
         alt="Perfil" 
-        label="Lucas arboleda">
+        label='{{profile$.display_name}}'>
         </pimage>
         <img class="perfil__arrow" src="../../../assets/images/downIcon.png" alt="Down-Arrow">   
     </div>
     <div class="perfil__links">
         <aimage 
-            url="../../../assets/images/search.svg"
-            alt="Search" 
-            label="Mi perfil"
-            href="/my-account">
-        </aimage>
-        <aimage 
-            url="../../../assets/images/search.svg"
+            url="../../../assets/images/logOut.svg"
             alt="Search" 
             label="Log out"
             href="/"
-            (click)="LogOut()">
+            (click)="LogOut()"
+            color="black">
         </aimage>
     </div>
 </div>

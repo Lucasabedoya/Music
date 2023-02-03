@@ -1,0 +1,14 @@
+<article class="current-playlists" *ngFor="let playlist of currentPlaylist$ | async ; let i = index">
+    <img class="current-playlists__img" src='{{playlist.images[0].url}}' alt={{playlist.name}}>
+    <section class="current-playlists__container-info">
+        <div class="current-playlists__container-tittles">
+            <h4 class="current-playlists__list">LISTA</h4>
+            <h2 class="current-playlists__list-tittle">{{playlist.name}}</h2>
+        </div>
+        <div class="current-playlists__container-desc">
+            <p class="current-playlists__list-description">{{playlist.description}}</p>
+            <p class="current-playlists__list-owner">{{playlist.owner.display_name}} - {{playlist.tracks.total}} canciones</p>
+        </div>
+    </section>
+</article> 
+

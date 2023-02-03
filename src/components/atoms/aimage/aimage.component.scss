@@ -1,27 +1,42 @@
 @import "../../../styles/variables.scss";
 
 .a-image{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border: .1rem solid transparent;
-    border-radius: 1rem;
-    padding: .5vh 0;
-    
-    &:hover{
-        border: .1rem solid $shadow-gray; 
-    }
 
     &__icon{
         width: 1.4rem;
-        margin-left: .5vw;
+        margin: 0 .5vw;
     }
     
-    &__button{
-        color: $gray;
+    &__button{  
         font-size: 1.4rem;
-        margin-left: .6vw;
-    }
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: .1rem solid transparent;
+        border-radius: 1rem;
+        padding: .5vh 0;
 
+        &-black{
+            &:hover{
+                border: .1rem solid $black; 
+            }
+        }
+        &-white{
+            &:hover{
+                border: .1rem solid $t-white; 
+            }
+        }
+    }
+}
+
+.white{
+    color: $t-white;
+    &-icon{
+        filter: invert(1); 
+    }  
+}
+
+.black{
+    color: $black;
 }
 
